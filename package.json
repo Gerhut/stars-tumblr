@@ -1,0 +1,27 @@
+{
+  "name": "stars-tumblr",
+  "version": "0.0.1",
+  "description": "Put GitHub repositories I starred into Tumblr.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gerhut/stars-tumblr.git"
+  },
+  "keywords": [
+    "github",
+    "tumblr"
+  ],
+  "author": "George Chung <Gerhut@GMail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Gerhut/stars-tumblr/issues"
+  },
+  "homepage": "https://github.com/Gerhut/stars-tumblr#readme",
+  "dependencies": {
+    "github": "^0.2.4",
+    "tumblr.js": "0.0.5"
+  }
+}
