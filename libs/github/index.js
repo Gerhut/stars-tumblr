@@ -1,12 +1,9 @@
 var GitHub = require('github')
 
-var name = require('../name')
-
 module.exports = function Client() {
   var client = new GitHub({
-    debug: process.env.NODE_ENV != 'production',
     version: '3.0.0',
-    headers: { 'user-agent': name }
+    headers: { 'user-agent': 'stars-tumblr' }
   })
   client.authenticate({
     type: 'token',

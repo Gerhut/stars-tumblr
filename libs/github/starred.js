@@ -1,55 +1,34 @@
-var inherits = require('util').inherits
-var EventEmitter = require('events').EventEmitter
-
 var Client = require('./')
 
-function Starred(since) {
-  this.since = +since
-}
-
-inherits(Starred, EventEmitter)
-
-Starred.prototype.run = function run() {
-  if (this.listeners('repo').length == 0)
-    return
-
+function starred(onStar) {
   var client = new Client()
+  var nextPage = 1
+  var allStars = []
 
-  var since = this.since
-  this.since = NaN
+  function next() {
+    var star = allStars.shift()
+    if (star != null) {
+      setImmediate(onStar, null, star.repo, star.starred_at, next)
+    } else if (nextPage) {
+      request()
+    }
+  }
 
-  var request = function (page) {
+  function request() {
     client.repos.getStarred({
-      page: page,
-      headers: {
-        'Accept': 'application/vnd.github.v3.star+json'
-      }
+      page: nextPage++,
+      headers: { 'Accept': 'application/vnd.github.v3.star+json' }
     }, function (err, stars) {
-      if (err)
-        return this.emit('error', err)
+      if (!client.hasNextPage(stars))
+        nextPage = false
 
-      if (isNaN(this.since) && stars.length > 0)
-        this.since = stars[0].repo.id
+      allStars.push.apply(allStars, stars)
 
-      var met = stars.some(function (star) {
-      var repo = star.repo
-      repo.starred_at = star.starred_at
-      if (repo.id == since)
-        return true
-      else
-        this.emit('repo', repo)
-      }.bind(this))
+      next()
+    })
+  }
 
-      if (!met && client.hasNextPage(stars) && this.listeners('repo').length)
-        request(page + 1)
-      else
-        this.emit('end')
-    }.bind(this))
-  }.bind(this)
-
-  request(1)
-
-  return this
+  request()
 }
 
-module.exports = Starred
+module.exports = starred

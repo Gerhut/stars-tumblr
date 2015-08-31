@@ -2,16 +2,19 @@ var Client = require('./')
 
 var client = new Client()
 
-function post(repo, callback) {
-  client.link(Client.blog, {
-    slug: repo.id,
-    date: repo.starred_at,
-    format: 'markdown',
+function post(repo, date, readme, callback) {
+  var data = {
     title: repo.name,
-    tags: 'starred',
     url: repo.html_url,
-    description: repo.readme
-  }, callback)
+    date: date,
+    tags: 'starred,starred-' + repo.id,
+  }
+  if (readme)
+    data.description = readme.replace(/~/g,
+      function (char) {
+        return '&#' + char.charCodeAt() + ';'
+      })
+  client.link(Client.blog, data, callback)
 }
 
 module.exports = post

@@ -9,13 +9,7 @@ function readme(repo, callback) {
     headers: {
       'accept': 'application/vnd.github.v3.html'
     }
-  }, function (err, content) {
-    if (err)
-      return callback(err, repo)
-
-    repo.readme = content
-    callback(null, repo)
-  })
+  }, callback)
 }
 
 module.exports = readme
