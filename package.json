@@ -1,10 +1,11 @@
 {
   "name": "stars-tumblr",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Put GitHub repositories I starred into Tumblr.",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,12 @@
   },
   "homepage": "https://github.com/Gerhut/stars-tumblr#readme",
   "dependencies": {
-    "github": "^0.2.4",
-    "tumblr.js": "0.0.5"
+    "connect": "^3.4.0",
+    "request": "^2.61.0"
+  },
+  "devDependencies": {
+    "dotenv": "^1.2.0",
+    "mocha": "^2.3.0",
+    "should": "^7.1.0"
   }
 }

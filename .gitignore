@@ -26,5 +26,6 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-# Personal config
-config.js
+# Environment variables for test
+# https://www.npmjs.com/package/dotenv#should-i-commit-my-env-file
+.env

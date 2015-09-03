@@ -1,0 +1,29 @@
+{
+  "name": "Stars Tumblr",
+  "description": "Put GitHub repositories I starred into Tumblr.",
+  "keywords": [
+    "github",
+    "tumblr"
+  ],
+  "website": "https://github.com/gerhut/stars-tumblr",
+  "repository": "https://github.com/gerhut/stars-tumblr",
+  "success_url": "/",
+  "env": {
+    "INTERVAL": {
+      "description": "Interval (minutes) of check new stars",
+      "value": "60"
+    },
+    "GITHUB_TOKEN": {
+      "description": "GitHub Personal Access Token"
+    },
+    "TUMBLR_BLOG": {
+      "description": "Tumblr Blog to Post"
+    },
+    "TUMBLR_CONSUMER_KEY": {
+      "description": "Tumblr App OAuth Consumer Key"
+    },
+    "TUMBLR_CONSUMER_SECRET": {
+      "description": "Tumblr App OAuth Consumer Secret"
+    }
+  }
+}

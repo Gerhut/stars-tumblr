@@ -1,0 +1,4 @@
+--require should
+--require dotenv/config
+--timeout 20000
+--reporter nyan
