@@ -1,4 +1,6 @@
 # stars-tumblr
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Gerhut/stars-tumblr.svg)](https://greenkeeper.io/)
 Put GitHub repositories I starred into Tumblr.
 
 ## Usage
